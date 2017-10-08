@@ -1,0 +1,14 @@
+{
+  "name": "TwitterCLone",
+  "version": "0.1.0",
+  "description": "Create a clone for twitter app",
+  "main": "index.js",
+  "repository": "https://github.com/johinsDev/twitter_clone",
+  "author": "johinsDev",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cross-env": "^5.0.5",
+    "express": "^4.16.1"
+  }
+}
