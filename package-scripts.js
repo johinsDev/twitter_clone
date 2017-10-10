@@ -35,5 +35,8 @@ module.exports = {
         script: concurrent.nps('dev.watch', 'dev.withDebug'),
       },
     },
+    db: {
+      seedsTweet: 'bash ./scripts/seeds/tweet.seed.sh'
+    },
   }
 }
