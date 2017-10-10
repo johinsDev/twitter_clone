@@ -6,9 +6,37 @@
   "repository": "https://github.com/johinsDev/twitter_clone",
   "author": "johinsDev",
   "license": "MIT",
+  "scripts": {
+    "build": "nps build",
+    "start": "nps",
+    "test": "nps test",
+    "test:watch": "nps test.watch",
+    "dev": "nps dev",
+    "dev:debug": "nps dev.debug"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "cross-env": "^5.0.5",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.8.0",
+    "eslint-config-equimper": "^2.2.1",
+    "eslint-config-prettier": "^2.6.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.1",
+    "nps": "^5.7.1",
+    "nps-utils": "^1.4.0",
+    "webpack": "^3.6.0",
+    "webpack-node-externals": "^1.6.0",
+    "webpack-sources": "^1.0.1"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
-    "cross-env": "^5.0.5",
-    "express": "^4.16.1"
+    "chalk": "^2.1.0",
+    "express": "^4.16.1",
+    "mongoose": "^4.12.1"
   }
 }
