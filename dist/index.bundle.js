@@ -65,11 +65,195 @@ module.exports =
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+__webpack_require__(6).config();
+
+const defaultConfig = {
+  PORT: process.env.PORT || 3000
+};
+
+const devConfig = {
+  MONGO_URL: process.env.MONGO_URL_DEV
+};
+
+const prodConfig = {
+  MONGO_URL: process.env.MONGO_URL_PROD
+};
+
+function envConfig(env) {
+  switch (env) {
+    case 'development':
+      return devConfig;
+    default:
+      return prodConfig;
+  }
+}
+
+exports.default = Object.assign({}, defaultConfig, envConfig(process.env.NODE_ENV));
+
+/***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _chalk = __webpack_require__(2);
+
+var _chalk2 = _interopRequireDefault(_chalk);
+
+var _express = __webpack_require__(3);
+
+var _express2 = _interopRequireDefault(_express);
+
+__webpack_require__(4);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _middlewares = __webpack_require__(7);
+
+var _middlewares2 = _interopRequireDefault(_middlewares);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const app = (0, _express2.default)(); /* eslint-disable no-console */
+/**
+ * Server setup
+ */
+
+
+(0, _middlewares2.default)(app);
+
+app.listen(_constants2.default.PORT, err => {
+  if (err) {
+    console.log(_chalk2.default.red('Cannot run!'));
+  } else {
+    console.log(_chalk2.default.green.bold(`
+      Yep this is working 🍺
+      App listen on port: ${_constants2.default.PORT} 🍕
+      Env: ${process.env.NODE_ENV} 🦄
+    `));
+  }
+});
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/johinsdev/Documents/Projects/node/twitter_clone/src/.babelrc'\n    at Object.fs.openSync (fs.js:584:18)\n    at Object.fs.readFileSync (fs.js:491:33)\n    at ConfigChainBuilder.addConfig (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-core/lib/transformation/file/options/build-config-chain.js:146:32)\n    at ConfigChainBuilder.findConfigs (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-core/lib/transformation/file/options/build-config-chain.js:96:16)\n    at buildConfigChain (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-core/lib/transformation/file/options/build-config-chain.js:61:13)\n    at OptionManager.init (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-core/lib/transformation/file/options/option-manager.js:354:58)\n    at File.initOptions (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-core/lib/transformation/file/index.js:212:65)\n    at new File (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-core/lib/transformation/file/index.js:135:24)\n    at Pipeline.transform (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-core/lib/transformation/pipeline.js:46:16)\n    at transpile (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-loader/lib/index.js:50:20)\n    at Object.module.exports (/Users/johinsdev/Documents/Projects/node/twitter_clone/node_modules/babel-loader/lib/index.js:175:20)");
+module.exports = require("chalk");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _mongoose = __webpack_require__(5);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Remove the warning with Promise
+/* eslint-disable no-console */
+
+/**
+ * Configuration for the database
+ */
+
+_mongoose2.default.Promise = global.Promise;
+
+// If debug run the mongoose debug options
+_mongoose2.default.set('debug', process.env.MONGOOSE_DEBUG);
+
+// Connect the db with the url provide
+try {
+  _mongoose2.default.connect(_constants2.default.MONGO_URL, {
+    useMongoClient: true
+  });
+} catch (err) {
+  _mongoose2.default.createConnection(_constants2.default.MONGO_URL, {
+    useMongoClient: true
+  });
+}
+
+_mongoose2.default.connection.once('open', () => console.log('MongoDB Running')).on('error', e => {
+  throw e;
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("mongoose");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("dotenv");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bodyParser = __webpack_require__(8);
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const isDev = process.env.NODE_ENV === 'development';
+
+exports.default = app => {
+  app.use(_bodyParser2.default.json());
+  app.use(_bodyParser2.default.urlencoded({ extended: true }));
+  if (isDev) {
+    const morgan = __webpack_require__(9);
+
+    app.use(morgan('dev'));
+  }
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("body-parser");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("morgan");
 
 /***/ })
 /******/ ]);
