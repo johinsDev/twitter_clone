@@ -5,11 +5,13 @@ const defaultConfig = {
 };
 
 const devConfig = {
-   MONGO_URL: process.env.MONGO_URL_DEV
+   MONGO_URL: process.env.MONGO_URL_DEV,
+   GRAPHQL_PATH: process.env.GRAPHQL_PATH_DEV
 };
 
 const prodConfig = {
-  MONGO_URL: process.env.MONGO_URL_PROD
+  MONGO_URL: process.env.MONGO_URL_PROD,
+  GRAPHQL_PATH: process.env.GRAPHQL_PATH_PROD
 };
 
 function envConfig(env) {
