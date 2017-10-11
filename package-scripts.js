@@ -36,7 +36,18 @@ module.exports = {
       },
     },
     db: {
-      seedsTweet: 'bash ./scripts/seeds/tweet.seed.sh'
+      initSeed: {
+        description: 'init seeder config for database',
+        script: 'md-seed init'
+      },
+      all:{
+        description: 'Run all seeders',
+        script: 'md-seed run'
+      },
+      seedTweets:{
+        description: 'Run tweet seeders',
+        script: 'md-seed run tweets'
+      }
     },
   }
 }

@@ -11,6 +11,7 @@
 - nps
 - typescript
 - chalk
+- mongoose-data-seed
 
 ### DEVOPTS
 

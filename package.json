@@ -12,7 +12,10 @@
     "test": "nps test",
     "test:watch": "nps test.watch",
     "dev": "nps dev",
-    "dev:debug": "nps dev.debug"
+    "dev:debug": "nps dev.debug",
+    "db:seeds-init": "nps db.initSeed",
+    "db:seeds-all": "nps db.all",
+    "db:seeds-tweet": "nps db.seedTweets"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -41,6 +44,7 @@
     "faker": "^4.1.0",
     "graphql": "^0.11.7",
     "graphql-tools": "^2.3.0",
-    "mongoose": "^4.12.1"
+    "mongoose": "^4.12.1",
+    "mongoose-data-seed": "^1.0.2"
   }
 }
