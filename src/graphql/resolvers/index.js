@@ -4,7 +4,8 @@ import UserResolvers from '../../modules/User/user.resolvers';
 export default {
   Query: {
     getTweet: TweetResolvers.getTweet,
-    getTweets: TweetResolvers.getTweets
+    getTweets: TweetResolvers.getTweets,
+    me: UserResolvers.me
   },
   Mutation: {
     createTweet: TweetResolvers.createTweet,
