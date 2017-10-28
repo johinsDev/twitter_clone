@@ -1,3 +1,7 @@
 node_modules/*
 .env
 /dist
+.idea/*
+yarn.lock
+.idea/
+node_modules/
