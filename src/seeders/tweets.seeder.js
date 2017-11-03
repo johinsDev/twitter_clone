@@ -19,11 +19,10 @@ class TweetsSeeder extends Seeder {
   }
 
   _generatePosts() {
-    return Array.from({ length: TWEETS_TOTAL }).map(() => {
-      return {
-        text: faker.lorem.paragraphs(1)
-      };
-    });
+    return Array.from({ length: TWEETS_TOTAL }).map(() => ({
+        text: faker.lorem.sentence()
+      })
+    );
   }
 }
 
