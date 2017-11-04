@@ -6,12 +6,13 @@ import User from '../../modules/User/user.model';
 
 export default {
   Date: GraphQLDate,
-  Tweet: {
-    user: ({ user }) => User.findById(user)
-  },
   Query: {
+    // Tweet: {
+    //   user: ({ user }) => User.findById(user),
+    // },
     getTweet: TweetResolvers.getTweet,
     getTweets: TweetResolvers.getTweets,
+    getUserTweets: TweetResolvers.getUserTweets,
     me: UserResolvers.me
   },
   Mutation: {
